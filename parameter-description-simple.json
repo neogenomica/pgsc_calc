@@ -1,0 +1,26 @@
+{
+    "input": {
+        "description": "Path to comma-separated file containing information about the samples in the experiment.",
+        "optional": false
+    },
+    "format" : {
+        "description": "What format is the samplesheet in? (*json*/csv).",
+        "optional": true
+    },
+    "scorefile": {
+        "description": "Path to a scoring file in PGS Catalog format. Multiple scorefiles can be specified using wildcards (e.g., --scorefile \"path/to/scores/*.txt\")",
+        "optional": false
+    },
+    "target_build": {
+        "description": "Genome build of target genomes(*GRCh38*, GRCh37).",
+        "optional": true
+    },
+    "hg38_chain": {
+       "description": "Small hg38 reference data is needed to run the calculator. https://hgdownload.soe.ucsc.edu/goldenPath/hg38/liftOver/hg38ToHg19.over.chain.gz",
+        "optional": true 
+    },
+    "hg19_chain": {
+       "description": "Small hg19 reference data is needed to run the calculator. https://hgdownload.cse.ucsc.edu/goldenpath/hg19/liftOver/hg19ToHg38.over.chain.gz",
+        "optional": true 
+    }
+}

@@ -1,0 +1,66 @@
+{
+    "input": {
+        "description": "Path to comma-separated file containing information about the samples in the experiment.",
+        "optional": false
+    },
+    "format" : {
+        "description": "What format is the samplesheet in? (csv/json).",
+        "optional": false
+    },
+    "scorefile": {
+        "description": "Path to a scoring file in PGS Catalog format. Multiple scorefiles can be specified using wildcards (e.g., --scorefile \"path/to/scores/*.txt\")",
+        "optional": false
+    },
+    "pgs_id": {
+        "description": "A comma separated list of PGS score IDs, e.g. PGS000802.",
+        "optional": false
+    },
+    "pgp_id": {
+        "description": "A comma separated list of PGS Catalog publications, e.g. PGP000001.",
+        "optional": true
+    },
+    "efo_id": {
+        "description": "A comma separated list of PGS Catalog EFO traits, e.g. EFO_0004214.",
+        "optional": true
+    },
+    "target_build": {
+        "description": "Genome build of target genomes(*GRCh38*, GRCh37).",
+        "optional": false
+    },
+    "projection_method": {
+        "description": "The method for PCA prediction. oadp: most accurate. adp: accurate but slow. sp: fast but inaccurate (*oadp*, sp, adp).",
+        "optional": false
+    },
+    "ancestry_method": {
+        "description": "Method used for population/ancestry assignment (*RandomForest*, Mahalanobis).",
+        "optional": false
+    },
+    "ref_label": {
+        "description": "Population labels in reference psam to use for assignment, e.g. SuperPop.",
+        "optional": false
+    },
+    "n_popcomp": {
+        "description": "Number of PCs used for population assignment, e.g. 5.",
+        "optional": false
+    },
+    "normalization_method": {
+        "description": "Method used for normalisation of genetic ancestry (*empirical mean mean+var*, empirical, mean, mean+var).",
+        "optional": false
+    },
+    "n_normalization": {
+        "description": "Number of PCs used for population normalisation, e.g. 4.",
+        "optional": false
+    },
+    "load_afreq": {
+        "description": "Load allelic frequencies from reference panel when scoring target genomes, e.g. True",
+        "optional": false
+    },
+    "pca_maf_target": {
+        "description": "Minimum MAF threshold in TARGET samples for variants to be included in the PCA, e.g. 0.",
+        "optional": false
+    },
+    "pca_geno_miss_target": {
+        "description": "Maximum genotype missingness threshold in TARGET samples for variants to be included in the PCA, e.g. 0.1.",
+        "optional": false
+    }
+}
