@@ -4,15 +4,15 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-include { validateParameters; paramsSummaryLog; paramsSummaryMap } from 'plugin/nf-schema'
+// include { validateParameters; paramsSummaryLog; paramsSummaryMap } from 'plugin/nf-schema'
 
 
 def logo = NfcoreTemplate.logo(workflow, params.monochrome_logs)
 def citation = '\n' + WorkflowMain.citation(workflow) + '\n'
-def summary_params = paramsSummaryMap(workflow)
+// def summary_params = paramsSummaryMap(workflow)
 
 // Print parameter summary log to screen
-log.info logo + paramsSummaryLog(workflow) + citation
+// log.info logo + paramsSummaryLog(workflow) + citation
 
 WorkflowPgscCalc.initialise(params, log)
 
@@ -386,16 +386,16 @@ workflow PGSCCALC {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-workflow.onComplete {
-    if (params.email || params.email_on_fail) {
-        NfcoreTemplate.email(workflow, params, summary_params, projectDir, log)
-    }
-    NfcoreTemplate.dump_parameters(workflow, params)
-    NfcoreTemplate.summary(workflow, params, log)
-    if (params.hook_url) {
-        NfcoreTemplate.IM_notification(workflow, params, summary_params, projectDir, log)
-    }
-}
+// workflow.onComplete {
+//     if (params.email || params.email_on_fail) {
+//         NfcoreTemplate.email(workflow, params, summary_params, projectDir, log)
+//     }
+//     NfcoreTemplate.dump_parameters(workflow, params)
+//     NfcoreTemplate.summary(workflow, params, log)
+//     if (params.hook_url) {
+//         NfcoreTemplate.IM_notification(workflow, params, summary_params, projectDir, log)
+//     }
+// }
 
 workflow.onError {
     if (workflow.errorReport.contains("Process requirement exceeds available memory")) {
