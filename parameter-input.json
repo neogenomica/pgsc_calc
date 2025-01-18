@@ -1,0 +1,7 @@
+{
+    "input": "s3://bioinfo-resources/prs-resources/assets/cineca_samplesheet.json",
+    "format": "json",
+    "scorefile": "s3://bioinfo-resources/prs-resources/assets/PGS001229_22.txt",
+    "target_build": "GRCh37",
+    "hg19_chain": "s3://bioinfo-resources/prs-resources/assets/hg19ToHg38.over.chain.gz"
+}

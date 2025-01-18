@@ -1,0 +1,11 @@
+[
+    {
+        "sampleset": "hgdp",
+        "chrom": null,
+        "vcf_import_dosage": false,
+        "geno": "s3://bioinfo-resources/prs-resources/assets/cineca_synthetic_subset.bed",
+        "pheno": "s3://bioinfo-resources/prs-resources/assets/cineca_synthetic_subset.fam",
+        "variants": "s3://bioinfo-resources/prs-resources/assets/cineca_synthetic_subset.bim",
+        "format": "bfile"
+    }
+]
