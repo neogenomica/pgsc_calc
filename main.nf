@@ -15,14 +15,14 @@ nextflow.enable.dsl = 2
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
 
-include { paramsHelp } from 'plugin/nf-schema'
+// include { paramsHelp } from 'plugin/nf-schema'
 
 // Print help message if needed
-if (params.help) {
-    log.info paramsHelp("nextflow run pgscatalog/pgsc_calc --input input_file.csv")
-    log.info "See https://pgsc-calc.readthedocs.io/en/latest/getting-started.html for more help"
-    exit 0
-}
+// if (params.help) {
+//     log.info paramsHelp("nextflow run pgscatalog/pgsc_calc --input input_file.csv")
+//     log.info "See https://pgsc-calc.readthedocs.io/en/latest/getting-started.html for more help"
+//     exit 0
+// }
 
 WorkflowMain.initialise(workflow, params, log, args)
 
