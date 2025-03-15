@@ -1,0 +1,11 @@
+[
+    {
+        "pheno": "s3://bioinfo-resources/prs-resources/assets/pgs_input_NA12878.fam",
+        "vcf_import_dosage": false,
+        "variants": "s3://bioinfo-resources/prs-resources/assets/pgs_input_NA12878.bim",
+        "geno": "s3://bioinfo-resources/prs-resources/assets/pgs_input_NA12878.bed",
+        "sampleset": "NA12878",
+        "chrom": null,
+        "format": "bfile"
+    }
+]

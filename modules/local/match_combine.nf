@@ -17,9 +17,9 @@ process MATCH_COMBINE {
     tuple val(meta), path('???.ipc.zst'), path(scorefile), path(shared)
 
     output:
-    tuple val(scoremeta), path("combine/*.scorefile.gz"), emit: scorefile
-    path "combine/*_summary.csv"                        , emit: summary
-    path "combine/*_log.csv.gz"                         , emit: db
+    tuple val(scoremeta), path("match/*.scorefile.gz"), emit: scorefile
+    path "match/*_summary.csv"                        , emit: summary
+    path "match/*_log.csv.gz"                         , emit: db
     path "versions.yml"                         ,  emit: versions
 
     script:
@@ -38,7 +38,7 @@ process MATCH_COMBINE {
         """
         export POLARS_MAX_THREADS=$task.cpus
 
-        mkdir combine/
+        mkdir match/
         pgscatalog-matchmerge \
             $args \
             --dataset $meta.id \
@@ -47,7 +47,7 @@ process MATCH_COMBINE {
             --min_overlap $params.min_overlap \
             $ambig \
             $multi \
-            --outdir combine/ \
+            --outdir match/ \
             $split_output \
             $combined_output \
             -v
@@ -67,6 +67,7 @@ process MATCH_COMBINE {
 
         export POLARS_MAX_THREADS=$task.cpus
 
+        mkdir match/
         pgscatalog-matchmerge \
             $args \
             --dataset $meta.id \
@@ -76,7 +77,7 @@ process MATCH_COMBINE {
             $ambig \
             $multi \
             --filter_IDs filter_ids.txt.gz \
-            --outdir \$PWD \
+            --outdir match/ \
             $split_output \
             $combined_output \
             -v
