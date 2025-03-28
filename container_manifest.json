@@ -1,0 +1,10 @@
+{
+    "manifest": [
+      	"ghcr.io/pgscatalog/plink2:2.00a5.10",
+        "ghcr.io/pgscatalog/pygscatalog:pgscatalog-utils-1.4.4",
+        "ghcr.io/pgscatalog/pyyaml:6.0",
+        "ghcr.io/pgscatalog/report:2-beta",
+        "ghcr.io/pgscatalog/fraposa_pgsc:v1.0.2",
+        "ghcr.io/pgscatalog/zstd:2-beta"
+    ]
+}
