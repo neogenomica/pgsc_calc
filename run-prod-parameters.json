@@ -1,0 +1,12 @@
+{
+    "input": "s3://neobioinfo-production-resources/prs-assets/assets/pgscalc_input_NA12878_MGI.json",
+    "hg38_chain": "s3://neobioinfo-production-resources/prs-assets/reference/hg38-chain/hg38ToHg19.over.chain.gz",
+    "min_overlap": "0",
+    "run_ancestry": "s3://neobioinfo-production-resources/prs-assets/reference/ancestry/pgsc_HGDP+1kGP_v1.tar.zst",
+    "scorefile": "s3://neobioinfo-production-resources/prs-assets/reference/scoring-files/PGS000004_hmPOS_GRCh38.txt",
+    "target_build": "GRCh38",
+    "pheno": "s3://neobioinfo-production-resources/prs-assets/assets/pgs_input_NA12878.fam",
+    "variants": "s3://neobioinfo-production-resources/prs-assets/assets/pgs_input_NA12878.bim",
+    "geno": "s3://neobioinfo-production-resources/prs-assets/assets/pgs_input_NA12878.bed",
+    "ecr_registry": "529088295469.dkr.ecr.us-east-1.amazonaws.com"
+  }

@@ -38,5 +38,9 @@
     "geno": {
        "description": "Path to genoftype file: plink 1 bed, plink 2 pgen, or the VCF path",
        "optional": false
+    },
+    "ecr_registry": {
+       "description": "ECR registry to use for the container",
+       "optional": true
     }
 }
