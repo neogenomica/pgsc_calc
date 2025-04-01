@@ -1,5 +1,5 @@
 {
-    "input": "s3://neobioinfo-production-resources/prs-assets/assets/pgscalc_input_NA12878_MGI.json",
+    "input": "s3://neobioinfo-production-resources/prs-assets/assets/pgscalc_input_NA12878_MGI_prod.json",
     "hg38_chain": "s3://neobioinfo-production-resources/prs-assets/reference/hg38-chain/hg38ToHg19.over.chain.gz",
     "min_overlap": "0",
     "run_ancestry": "s3://neobioinfo-production-resources/prs-assets/reference/ancestry/pgsc_HGDP+1kGP_v1.tar.zst",
