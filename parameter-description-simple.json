@@ -1,46 +1,46 @@
 {
-    "input": {
-        "description": "Path to comma-separated file containing information about the samples in the experiment.",
-        "optional": false
-    },
-    "scorefile": {
-        "description": "Path to a scoring file in PGS Catalog format. Multiple scorefiles can be specified using wildcards (e.g., --scorefile \"path/to/scores/*.txt\")",
-        "optional": false
-    },
-    "target_build": {
-        "description": "Genome build of target genomes(*GRCh38*, GRCh37).",
-        "optional": false
-    },
-    "hg38_chain": {
-       "description": "Small hg38 reference data is needed to run the calculator. https://hgdownload.soe.ucsc.edu/goldenPath/hg38/liftOver/hg38ToHg19.over.chain.gz",
-        "optional": true 
-    },
-    "hg19_chain": {
-       "description": "Small hg19 reference data is needed to run the calculator. https://hgdownload.cse.ucsc.edu/goldenpath/hg19/liftOver/hg19ToHg38.over.chain.gz",
-        "optional": true 
-    },
-    "run_ancestry": {
-       "description": "Path to a directory that can store relabelled genotypes (and the reference panel intersections and PCA with –run_ancestry) to speed up new PGS calculations on previously harmonized samples",
-       "optional": true
-    },
-    "min_overlap": {
-       "description": "Minimum proportion of variants present in both the score file and input target genomic data",
-       "optional": false
-    },
-    "pheno": {
-       "description": "Path to sample information file: plink 1 fam files, plink 2 fam files, or the VCF path",
-       "optional": false
-    },
-    "variants": {
-       "description": "Path to variant information file: plink 1 bim, plink 2 pvar, or the VCF path",
-       "optional": false
-    },
-    "geno": {
-       "description": "Path to genoftype file: plink 1 bed, plink 2 pgen, or the VCF path",
-       "optional": false
-    },
-    "ecr_registry": {
-       "description": "ECR registry to use for the container",
-       "optional": true
-    }
+   "input": {
+      "description": "Path to comma-separated file containing information about the samples in the experiment.",
+      "optional": false
+   },
+   "scorefile": {
+      "description": "Path to a scoring file in PGS Catalog format. Multiple scorefiles can be specified using wildcards (e.g., --scorefile \"path/to/scores/*.txt\")",
+      "optional": false
+   },
+   "target_build": {
+      "description": "Genome build of target genomes(*GRCh38*, GRCh37).",
+      "optional": false
+   },
+   "run_ancestry": {
+      "description": "Path to a directory that can store relabelled genotypes (and the reference panel intersections and PCA with –run_ancestry) to speed up new PGS calculations on previously harmonized samples",
+      "optional": true
+   },
+   "min_overlap": {
+      "description": "Minimum proportion of variants present in both the score file and input target genomic data",
+      "optional": false
+   },
+   "pheno": {
+      "description": "Path to sample information file: plink 1 fam files, plink 2 fam files, or the VCF path",
+      "optional": false
+   },
+   "variants": {
+      "description": "Path to variant information file: plink 1 bim, plink 2 pvar, or the VCF path",
+      "optional": false
+   },
+   "geno": {
+      "description": "Path to genoftype file: plink 1 bed, plink 2 pgen, or the VCF path",
+      "optional": false
+   },
+   "ecr_registry": {
+      "description": "ECR registry to use for the container",
+      "optional": true
+   },
+   "liftover": {
+      "description": "Enable liftover to target build",
+      "optional": true
+   },
+   "chain_files": {
+      "description": "Path to chain files for liftover",
+      "optional": true
+   }
 }

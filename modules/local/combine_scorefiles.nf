@@ -12,7 +12,7 @@ process COMBINE_SCOREFILES {
 
     input:
     path raw_scores
-    path reference
+    path chain_files
 
     output:
     path "scorefiles.txt.gz", emit: scorefiles
@@ -24,6 +24,10 @@ process COMBINE_SCOREFILES {
 
     if (params.liftover)
         """
+        set -euxo pipefail
+
+        echo "Liftover is enabled"
+
         pgscatalog-combine -s $raw_scores \
             --liftover \
             -t $params.target_build \
@@ -41,6 +45,10 @@ process COMBINE_SCOREFILES {
         """
     else
         """
+        set -euxo pipefail
+
+        echo "Liftover is disabled"
+
         pgscatalog-combine -s $raw_scores \
             -t $params.target_build \
             -o scorefiles.txt.gz \
