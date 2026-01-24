@@ -34,7 +34,7 @@ process MATCH_VARIANTS {
     
     export POLARS_MAX_THREADS=$task.cpus
     
-    mkdir -pmatch/
+    mkdir -p match/
     pgscatalog-match \
         $args \
         --dataset ${meta.id} \
