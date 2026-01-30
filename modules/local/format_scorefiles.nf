@@ -27,7 +27,7 @@ process FORMAT_SCOREFILES {
         set -euxo pipefail
 
         echo "Liftover is enabled"
-        mkdir formatted
+        mkdir -p formatted
 
         pgscatalog-format -s $raw_scores \
             --liftover \
@@ -50,7 +50,7 @@ process FORMAT_SCOREFILES {
         set -euxo pipefail
 
         echo "Liftover is disabled"
-        mkdir formatted
+        mkdir -p formatted
 
         pgscatalog-format -s $raw_scores \
             -t $params.target_build \
