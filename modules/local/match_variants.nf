@@ -30,9 +30,11 @@ process MATCH_VARIANTS {
     scoremeta.id = "$meta.id"
 
     """
+    set -euxo pipefail
+    
     export POLARS_MAX_THREADS=$task.cpus
     
-    mkdir match/
+    mkdir -p match/
     pgscatalog-match \
         $args \
         --dataset ${meta.id} \

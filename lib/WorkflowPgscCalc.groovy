@@ -18,10 +18,6 @@ class WorkflowPgscCalc {
         if (!params.target_build) {
             Nextflow.error "ERROR: You didn't set the target build of your target genomes. Please set --target_build GRCh37 or --target_build GRCh38"
         }
-
-        if (params.liftover && !params.hg19_chain || params.liftover && !params.hg38_chain) {
-            Nextflow.error "ERROR: Missing --hg19_chain or --hg38_chain with --liftover. Please download UCSC chain files and set chain file paths"
-        }
     }
 
     public static LinkedHashMap prepareAccessions(String accession, String key) {
