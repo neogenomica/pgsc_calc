@@ -30,6 +30,8 @@ process INTERSECT_VARIANTS {
     id = meta.subMap('id', 'build', 'n_chrom', 'chrom')
     output = "${meta.id}_${meta.chrom}_matched"
     """
+    set -euxo pipefail
+
     pgscatalog-intersect --ref $ref_variants \
         --target $variants \
         --chrom $meta.chrom \

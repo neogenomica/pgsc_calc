@@ -36,9 +36,13 @@ process MATCH_COMBINE {
     script:
     if (shared.name == "NO_FILE")
         """
+        set -euxo pipefail
+
+        echo "shared.name == NO_FILE"
+
         export POLARS_MAX_THREADS=$task.cpus
 
-        mkdir match/
+        mkdir -p match/
         pgscatalog-matchmerge \
             $args \
             --dataset $meta.id \
@@ -60,6 +64,9 @@ process MATCH_COMBINE {
 
     else
         """
+        set -euxo pipefail
+        
+        echo "shared.name == $shared.name"
         # filter match candidates to intersect with reference:
         # omit multi-allelic variants in reference because these will cause errors with relabelling!...
         # ... unclear whether we should remove them from target with (9th column) as well?
@@ -67,7 +74,7 @@ process MATCH_COMBINE {
 
         export POLARS_MAX_THREADS=$task.cpus
 
-        mkdir match/
+        mkdir -p match/
         pgscatalog-matchmerge \
             $args \
             --dataset $meta.id \

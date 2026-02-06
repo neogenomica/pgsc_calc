@@ -16,6 +16,10 @@ polygenic [risk] scores on samples with imputed genotypes using existing scoring
 files from the [Polygenic Score (PGS) Catalog](https://www.pgscatalog.org/)
 and/or user-defined PGS/PRS.
 
+> [!TIP]
+> Working with large cloud-based environments like UK Biobank RAP or All of Us?
+> [Try our new pre-release with improved cloud compatibility for BGEN / VCF files](https://github.com/PGScatalog/pgsc_calc/releases/tag/v3.0.0-alpha.1)
+ 
 ## Pipeline summary
 
 > [!IMPORTANT]  
@@ -23,7 +27,7 @@ and/or user-defined PGS/PRS.
 > * It’s possible to [create compatible gVCFs from WGS data](https://github.com/PGScatalog/pgsc_calc/discussions/123#discussioncomment-6469422). We plan to improve support for WGS data in the near future.
 
 <p align="center">
-  <img width="80%" src="https://github.com/PGScatalog/pgsc_calc/assets/11425618/f766b28c-0f75-4344-abf3-3463946e36cc">
+  <img width="80%" src="https://github.com/user-attachments/assets/39d7e328-5528-489c-9c43-12f32d301e3f">
 </p>
 
 The workflow performs the following steps:

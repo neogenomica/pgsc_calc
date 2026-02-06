@@ -211,9 +211,8 @@ workflow PGSCCALC {
         ch_scorefiles = ch_scores.collect()
         // chain files are optional input
         Channel.fromPath(optional_input).set { chain_files }
-        if (params.hg19_chain && params.hg38_chain) {
-            Channel.fromPath(params.hg19_chain, checkIfExists: true)
-                .mix(Channel.fromPath(params.hg38_chain, checkIfExists: true))
+        if (params.chain_files) {
+            Channel.fromPath(params.chain_files, checkIfExists: true)
                 .collect()
                 .set { chain_files }
         }
