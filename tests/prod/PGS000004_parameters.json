@@ -1,0 +1,10 @@
+{
+    "sample_name": "G-NA12878-CONTROLEVALI72",
+    "vcf_path": "s3://neobioinfo-production-sample-files/deploy/7434705/pubdir/G-NA12878-CONTROLEVALI72/GENOTYPER/G-NA12878-CONTROLEVALI72.PGS000004.pgsc.vcf.gz",
+    "vcf_tbi_path": "s3://neobioinfo-production-sample-files/deploy/7434705/pubdir/G-NA12878-CONTROLEVALI72/GENOTYPER/G-NA12878-CONTROLEVALI72.PGS000004.pgsc.vcf.gz.tbi",
+    "pgs_path": "s3://neobioinfo-production-resources/prs-assets/reference/pgs_vcf/hg38/PGS000004.hg38.vcf.gz",
+    "pgs_tbi_path": "s3://neobioinfo-production-resources/prs-assets/reference/pgs_vcf/hg38/PGS000004.hg38.vcf.gz.tbi",
+    "prs_qc_docker": "529088295469.dkr.ecr.us-east-1.amazonaws.com/ghcr/pgscatalog/plink2:2.00a5.10",
+    "pyyaml_qc_docker": "529088295469.dkr.ecr.us-east-1.amazonaws.com/ghcr/pgscatalog/pyyaml:6.0",
+    "bcftools_docker": "529088295469.dkr.ecr.us-east-1.amazonaws.com/quay/biocontainers/bcftools:1.21--h8b25389_0"
+}
