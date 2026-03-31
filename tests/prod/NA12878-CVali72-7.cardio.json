@@ -1,9 +1,9 @@
 {
     "ecr_registry": "529088295469.dkr.ecr.us-east-1.amazonaws.com",
-    "input": "s3://neobioinfo-production-resources/prs-assets/test-samples/pgsc_calc/NA12878-CVali72-7/PGS003725_cardio/pgscalc_input_NA12878-CVali72-7.cardio.json",
-    "pheno": "s3://neobioinfo-production-resources/prs-assets/test-samples/pgsc_calc/NA12878-CVali72-7/PGS003725_cardio/pgs_input_NA12878-CVali72-7.fam",
-    "geno": "s3://neobioinfo-production-resources/prs-assets/test-samples/pgsc_calc/NA12878-CVali72-7/PGS003725_cardio/pgs_input_NA12878-CVali72-7.bed",
-    "variants": "s3://neobioinfo-production-resources/prs-assets/test-samples/pgsc_calc/NA12878-CVali72-7/PGS003725_cardio/pgs_input_NA12878-CVali72-7.bim",
+    "input": "s3://neobioinfo-production-sample-files/deploy/1569950/pubdir/G-NA12878-CONTROLEVALI72/PGS/PREPARE_SAMPLE/pgscalc_input_G-NA12878-CONTROLEVALI72.json",
+    "pheno": "s3://neobioinfo-production-sample-files/deploy/1569950/pubdir/G-NA12878-CONTROLEVALI72/PGS/PREPARE_SAMPLE/pgs_input_G-NA12878-CONTROLEVALI72.fam",
+    "geno": "s3://neobioinfo-production-sample-files/deploy/1569950/pubdir/G-NA12878-CONTROLEVALI72/PGS/PREPARE_SAMPLE/pgs_input_G-NA12878-CONTROLEVALI72.bed",
+    "variants": "s3://neobioinfo-production-sample-files/deploy/1569950/pubdir/G-NA12878-CONTROLEVALI72/PGS/PREPARE_SAMPLE/pgs_input_G-NA12878-CONTROLEVALI72.bim",
     "min_overlap": 0.75,
     "run_ancestry": "s3://neobioinfo-production-resources/prs-assets/reference/ancestry/pgsc_HGDP+1kGP_v1.tar.zst",
     "scorefile": "s3://neobioinfo-production-resources/prs-assets/reference/scoring-files/PGS003725_hmPOS_GRCh38.txt",
