@@ -5,7 +5,8 @@ process FRAPOSA_PROJECT {
 
     tag "${target_geno.baseName.tokenize('_')[1]}"
     
-
+    cachedir = params.genotypes_cache ? file(params.genotypes_cache) : workDir
+    storeDir cachedir / "ancestry" / "fraposa" / "project"
 
     conda "${task.ext.conda}"
 
