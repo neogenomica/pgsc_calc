@@ -5,9 +5,6 @@ process RELABEL_IDS {
 
     tag "$meta.id $meta.effect_type $target_format"
 
-    basedir = params.genotypes_cache ? file(params.genotypes_cache) : workDir
-    storeDir basedir / "ancestry" / "relabel" / "variants"
-
     conda "${task.ext.conda}"
 
     container "${ workflow.containerEngine == 'singularity' &&
