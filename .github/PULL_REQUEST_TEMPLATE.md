@@ -1,0 +1,54 @@
+# Checklist de Deploy
+
+## Resumo
+
+### Descreva brevemente:
+
+- O que foi alterado:
+  - 
+
+- Por que:
+  - 
+
+- Qual impacto esperado (comportamento/pipeline afetado):
+  - 
+
+---
+
+## Evidências
+
+Anexar imagens e outros arquivos que confirmem o funcionamento da feature.
+
+- [ ] Prints anexados
+- [ ] Logs anexados
+- [ ] Arquivos/resultados anexados (se aplicável)
+
+---
+
+## Validação técnica
+
+- [ ] Testes rodaram com sucesso na nuvem
+- [ ] Pipeline executa sem erro com inputs de teste
+- [ ] Logs verificados (sem warnings críticos)
+
+---
+
+## Mudanças estruturais
+
+- [ ] Houve alteração de parâmetros (add/remove/rename)?
+- [ ] Houve alteração de inputs (bancos, catálogos)?
+- [ ] Houve alteração de imagem Docker?
+
+### Se sim em qualquer item acima:
+
+- [ ] Inputs de develop e produção atualizados e compatíveis
+
+---
+
+## Versionamento
+
+- [ ] Versão atualizada conforme versionamento interno  
+  (guia: https://github.com/neogenomica/bioinfo-help/wiki/Processo-de-Desenvolvimento-de-Pipelines-e-Tags)
+
+- [ ] Tag criada corretamente
+- [ ] Documentação/README atualizada (se necessário)
