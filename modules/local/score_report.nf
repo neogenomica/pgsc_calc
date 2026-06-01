@@ -21,7 +21,8 @@ process SCORE_REPORT {
     output:
     // includeInputs to correctly use $meta.id in publishDir path
     // ancestry results are optional also
-    path "*.txt.gz", includeInputs: true
+    path "${meta.id}_pgs.txt.gz", emit: pgs_file
+    path "${meta.id}_popsimilarity.txt.gz", emit: popsimilarity_file
     path "*.json.gz", includeInputs: true, optional: true
     // for testing ancestry workflow
     path "pop_summary.csv", optional: true
