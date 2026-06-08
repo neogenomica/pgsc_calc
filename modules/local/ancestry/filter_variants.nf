@@ -30,6 +30,8 @@ process FILTER_VARIANTS {
     def input = (meta.is_pfile) ? '--pfile vzs' : '--bfile vzs'
     build = ['build': params.target_build]
     """
+    set -x
+    
     # 1. Get QC'd variant set & unrelated samples from REFERENCE data for PCA --
 
     # PCA_ELIGIBLE == "True"
