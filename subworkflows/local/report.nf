@@ -99,5 +99,5 @@ workflow REPORT {
 }
 
 def annotate_sampleset(it) {
-    return [['id': it.getName().tokenize('_')[0]], it]
+    [['id': it.getName().tokenize('_')[0]], it]
 }

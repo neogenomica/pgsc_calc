@@ -39,7 +39,7 @@ process RELABEL_SCOREFILES {
     # TODO: improve pgscatalog-relabel so you can set output names precisely
     # use some unpleasant sed to keep a consistent naming scheme
     # hgdp_ALL_additive_0.scorefile.gz -> reference_ALL_additive_0.scorefile.gz 
-    output=\$(echo $target | sed 's/^${meta.id}_/reference_/')
+    output=\$(echo $target | sed 's/^[^_]*_/reference_/')
 
     mv reference_ALL_relabelled.gz \$output
 
