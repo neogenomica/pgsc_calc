@@ -93,6 +93,8 @@ workflow REPORT {
     ch_versions = ch_versions.mix(SCORE_REPORT.out.versions)
 
     emit:
+    pgs_file = SCORE_REPORT.out.pgs_file
+    popsimilarity_file = SCORE_REPORT.out.popsimilarity_file
     versions = ch_versions
 }
 
