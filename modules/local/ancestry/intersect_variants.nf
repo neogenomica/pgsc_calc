@@ -5,8 +5,7 @@ process INTERSECT_VARIANTS {
 
     tag "$meta.id chromosome $meta.chrom"
 
-    cachedir = params.genotypes_cache ? file(params.genotypes_cache) : workDir
-    storeDir cachedir / "ancestry" / "intersected"
+
 
     conda "${task.ext.conda}"
 
@@ -30,6 +29,8 @@ process INTERSECT_VARIANTS {
     id = meta.subMap('id', 'build', 'n_chrom', 'chrom')
     output = "${meta.id}_${meta.chrom}_matched"
     """
+    set -euxo pipefail
+
     pgscatalog-intersect --ref $ref_variants \
         --target $variants \
         --chrom $meta.chrom \

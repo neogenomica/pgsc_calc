@@ -1,0 +1,11 @@
+{
+    "ecr_registry": "529088295469.dkr.ecr.us-east-1.amazonaws.com",
+    "input": "s3://neobioinfo-production-sample-files/deploy/9399082/pubdir/G-NA12878-CONTROLEVALI72/PGS/PREPARE_SAMPLE/pgscalc_input_G-NA12878-CONTROLEVALI72.json",
+    "pheno": "s3://neobioinfo-production-sample-files/deploy/9399082/pubdir/G-NA12878-CONTROLEVALI72/PGS/PREPARE_SAMPLE/pgs_input_G-NA12878-CONTROLEVALI72.fam",
+    "geno": "s3://neobioinfo-production-sample-files/deploy/9399082/pubdir/G-NA12878-CONTROLEVALI72/PGS/PREPARE_SAMPLE/pgs_input_G-NA12878-CONTROLEVALI72.bed",
+    "variants": "s3://neobioinfo-production-sample-files/deploy/9399082/pubdir/G-NA12878-CONTROLEVALI72/PGS/PREPARE_SAMPLE/pgs_input_G-NA12878-CONTROLEVALI72.bim",
+    "min_overlap": 0.75,
+    "run_ancestry": "s3://neobioinfo-production-resources/prs-assets/reference/ancestry/pgsc_HGDP+1kGP_v1.tar.zst",
+    "scorefile": "s3://neobioinfo-production-resources/prs-assets/reference/scoring-files/PGS000004_hmPOS_GRCh38.txt",
+    "target_build": "GRCh38"
+}
