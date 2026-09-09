@@ -18,7 +18,7 @@ process MATCH_VARIANTS {
     tuple val(meta), path(pvar), path(scorefile)
 
     output:
-    tuple val(meta), path("match/*.ipc.zst"), emit: matches
+    tuple val(meta), path("*.ipc.zst"), emit: matches
     path "versions.yml", emit: versions
 
     script:
@@ -30,11 +30,8 @@ process MATCH_VARIANTS {
     scoremeta.id = "$meta.id"
 
     """
-    set -euxo pipefail
-    
     export POLARS_MAX_THREADS=$task.cpus
-    
-    mkdir -p match/
+
     pgscatalog-match \
         $args \
         --dataset ${meta.id} \
@@ -44,7 +41,7 @@ process MATCH_VARIANTS {
         $match_chrom \
         $ambig \
         $multi \
-        --outdir match/ \
+        --outdir \$PWD \
         -v
 
     cat <<-END_VERSIONS > versions.yml
