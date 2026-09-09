@@ -181,7 +181,7 @@ def annotate_scorefiles(ArrayList scorefiles) {
             // dominant, 1 recessive). scorefile looks like:
             //     variant ID | effect allele | weight 1 | ... | weight_n
             // one weight is mandatory, extra weight columns are optional
-            scoremeta.n_scores = count_scores(it.last())
+            scoremeta.n_scores = count_scores(it.last().newInputStream())
 
             // file name structure: {dataset}_{chr}_{effect}_{split}.scorefile -
             // {dataset} is only used to disambiguate files, not for scoremeta
@@ -219,12 +219,10 @@ def annotate_genomic(ArrayList target) {
     return [meta, paths]
 }
 
-def count_scores(def p) {
-    // count number of calculated scores in a plink .scorefile
+def count_scores(InputStream f) {
+    // count number of calculated scores in a gzipped plink .scorefile
     // try-with-resources block automatically closes streams
-    def is_gzipped = p.toString().endsWith('.gz')
-    def stream = is_gzipped ? new GZIPInputStream(p.newInputStream()) : p.newInputStream()
-    try (buffered = new BufferedReader(new InputStreamReader(stream))) {
+    try (buffered = new BufferedReader(new InputStreamReader(new GZIPInputStream(f)))) {
         def n_extra_cols = 2 // ID, effect_allele
         def n_scores = buffered.readLine().split("\t").length - n_extra_cols
         assert n_scores > 0 : "Counting scores failed, please check scoring file"
