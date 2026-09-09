@@ -151,7 +151,7 @@ workflow PGSCCALC {
     // let's make one, and reuse it where possible
     // see https://nextflow-io.github.io/patterns/optional-input/ which explains this odd implementation pattern
     // these dummy files need to exist for cloud executors to work OK
-    optional_input = file(projectDir / "assets" / "NO_FILE", checkIfExists: true)
+    optional_input = file("${moduleDir}/../assets/NO_FILE", checkIfExists: true)
 
     //
     // SUBWORKFLOW: Create reference database for ancestry inference
@@ -250,7 +250,7 @@ workflow PGSCCALC {
     // - reference allelic frequencies 
     // - intersect counts
     // optional inputs need different names to prevent collisions during stage in
-    optional_intersect_count = file(projectDir / "assets" / "NO_FILE_INTERSECT_COUNT", checkIfExists: true)
+    optional_intersect_count = file("${moduleDir}/../assets/NO_FILE_INTERSECT_COUNT", checkIfExists: true)
     ref_afreq = Channel.value([[:], optional_input])
     intersect_count = Channel.fromPath(optional_intersect_count, checkIfExists: true)
 
