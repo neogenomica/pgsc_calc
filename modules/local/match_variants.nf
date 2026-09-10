@@ -2,6 +2,8 @@ process MATCH_VARIANTS {
     // labels are defined in conf/modules.config
     label 'process_medium'
     label 'pgscatalog_utils' // controls conda, docker, + singularity options
+    errorStrategy { task.exitStatus in [null, 137, 1] ? 'retry' : 'terminate' }
+    maxRetries 3
 
     // first element of tag must be sampleset
     tag "$meta.id chromosome $meta.chrom"
