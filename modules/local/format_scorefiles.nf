@@ -12,7 +12,7 @@ process FORMAT_SCOREFILES {
 
     input:
     path raw_scores
-    path chain_files
+    path reference
 
     output:
     path "formatted/normalised_*.{txt,txt.gz}", arity: "1..*", emit: scorefiles
@@ -24,10 +24,7 @@ process FORMAT_SCOREFILES {
 
     if (params.liftover)
         """
-        set -euxo pipefail
-
-        echo "Liftover is enabled"
-        mkdir -p formatted
+        mkdir formatted
 
         pgscatalog-format -s $raw_scores \
             --liftover \
@@ -47,10 +44,7 @@ process FORMAT_SCOREFILES {
         """
     else
         """
-        set -euxo pipefail
-
-        echo "Liftover is disabled"
-        mkdir -p formatted
+        mkdir formatted
 
         pgscatalog-format -s $raw_scores \
             -t $params.target_build \

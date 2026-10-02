@@ -17,9 +17,9 @@ process MATCH_COMBINE {
     tuple val(meta), path('???.ipc.zst'), path(scorefile), path(shared)
 
     output:
-    tuple val(scoremeta), path("match/*.scorefile.gz"), emit: scorefile
-    path "match/*_summary.csv"                        , emit: summary
-    path "match/*_log.csv.gz"                         , emit: db
+    tuple val(scoremeta), path("*.scorefile.gz"), emit: scorefile
+    path "*_summary.csv"                        , emit: summary
+    path "*_log.csv.gz"                         , emit: db
     path "versions.yml"                         ,  emit: versions
 
     script:
@@ -36,13 +36,8 @@ process MATCH_COMBINE {
     script:
     if (shared.name == "NO_FILE")
         """
-        set -euxo pipefail
-
-        echo "shared.name == NO_FILE"
-
         export POLARS_MAX_THREADS=$task.cpus
 
-        mkdir -p match/
         pgscatalog-matchmerge \
             $args \
             --dataset $meta.id \
@@ -51,7 +46,7 @@ process MATCH_COMBINE {
             --min_overlap $params.min_overlap \
             $ambig \
             $multi \
-            --outdir match/ \
+            --outdir \$PWD \
             $split_output \
             $combined_output \
             -v
@@ -64,9 +59,6 @@ process MATCH_COMBINE {
 
     else
         """
-        set -euxo pipefail
-        
-        echo "shared.name == $shared.name"
         # filter match candidates to intersect with reference:
         # omit multi-allelic variants in reference because these will cause errors with relabelling!...
         # ... unclear whether we should remove them from target with (9th column) as well?
@@ -74,7 +66,6 @@ process MATCH_COMBINE {
 
         export POLARS_MAX_THREADS=$task.cpus
 
-        mkdir -p match/
         pgscatalog-matchmerge \
             $args \
             --dataset $meta.id \
@@ -84,7 +75,7 @@ process MATCH_COMBINE {
             $ambig \
             $multi \
             --filter_IDs filter_ids.txt.gz \
-            --outdir match/ \
+            --outdir \$PWD \
             $split_output \
             $combined_output \
             -v

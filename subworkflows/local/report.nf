@@ -68,7 +68,7 @@ workflow REPORT {
         // make NO_FILE for each sampleset to join correctly later
         ancestry_results = ancestry_results.mix(
             ch_scores.map {it[0]} // unique samplesets
-                .combine(Channel.fromPath(file("${moduleDir}/../../assets/NO_FILE", checkIfExists: true)))
+                .combine(Channel.fromPath(file(projectDir / "assets" / "NO_FILE", checkIfExists: true)))
         )
     }
 
@@ -82,10 +82,10 @@ workflow REPORT {
         .combine(log_scorefiles) // all samplesets have the same scorefile metadata
         .set { ch_report_input }
 
-    Channel.fromPath([file("${moduleDir}/../../assets/report/report.qmd", checkIfExists: true),
-        file("${moduleDir}/../../assets/report/logo.css", checkIfExists: true),
-        file("${moduleDir}/../../assets/report/PGS_Logo.png", checkIfExists: true),
-        file("${moduleDir}/../../assets/report/pgs_header_background.png", checkIfExists: true)])
+    Channel.fromPath([file(projectDir / "assets" /"report" / "report.qmd", checkIfExists: true),
+        file(projectDir / "assets" /"report" / "logo.css", checkIfExists: true),
+        file(projectDir / "assets" /"report" / "PGS_Logo.png", checkIfExists: true),
+        file(projectDir / "assets" /"report" / "pgs_header_background.png", checkIfExists: true)])
       .collect()
       .set{ report_path }
 
@@ -93,8 +93,6 @@ workflow REPORT {
     ch_versions = ch_versions.mix(SCORE_REPORT.out.versions)
 
     emit:
-    pgs_file = SCORE_REPORT.out.pgs_file
-    popsimilarity_file = SCORE_REPORT.out.popsimilarity_file
     versions = ch_versions
 }
 

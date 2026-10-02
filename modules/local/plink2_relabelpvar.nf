@@ -6,7 +6,8 @@ process PLINK2_RELABELPVAR {
 
     tag "$meta.id chromosome $meta.chrom"
 
-
+    cachedir = params.genotypes_cache ? file(params.genotypes_cache) : workDir
+    storeDir cachedir / "genomes" / "relabelled"
 
     conda "${task.ext.conda}"
 
