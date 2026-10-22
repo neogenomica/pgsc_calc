@@ -37,9 +37,9 @@ process RELABEL_SCOREFILES {
         --outdir \$PWD
 
     # TODO: improve pgscatalog-relabel so you can set output names precisely
-    # use some unpleasant sed to keep a consistent naming scheme
-    # hgdp_ALL_additive_0.scorefile.gz -> reference_ALL_additive_0.scorefile.gz 
-    output=\$(echo $target | sed 's/^[^_]*_/reference_/')
+    # keep a consistent naming scheme even if dataset name contains underscores:
+    # {dataset}_{chr}_{effect}_{split}.scorefile.gz -> reference_{chr}_{effect}_{split}.scorefile.gz
+    output=\$(basename "$target" | awk -F'_' '{print "reference_" \$(NF-2) "_" \$(NF-1) "_" \$NF}')
 
     mv reference_ALL_relabelled.gz \$output
 

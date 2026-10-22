@@ -185,13 +185,14 @@ def annotate_scorefiles(ArrayList scorefiles) {
 
             // file name structure: {dataset}_{chr}_{effect}_{split}.scorefile -
             // {dataset} is only used to disambiguate files, not for scoremeta
-            scoremeta.chrom = it.last().getName().tokenize('_')[1].toString()
+            def tokens = it.last().getName().tokenize('_')
+            scoremeta.chrom = tokens[-3].toString()
 
             // get effect type from file name of scorefile ---------------------
-            scoremeta.effect_type = it.last().getName().tokenize('_')[2]
+            scoremeta.effect_type = tokens[-2]
 
             // get score number from file name of scorefile ---------------------
-            scoremeta.n = it.last().getName().tokenize('_')[3].tokenize('.')[0]
+            scoremeta.n = tokens[-1].tokenize('.')[0]
 
             return [scoremeta, it.last()]
     }
@@ -235,6 +236,7 @@ def count_scores(def p) {
 def annotate_chrom(ArrayList it) {
     // extract chrom from filename prefix and add to hashmap
     def meta = [:].plus(it.first())
-    meta.chrom = it.last().getBaseName().tokenize('_')[1]
+    def tokens = it.last().getBaseName().tokenize('_')
+    meta.chrom = tokens[-3]
     return [meta, it.last()]
 }
