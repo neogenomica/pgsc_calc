@@ -212,7 +212,7 @@ def annotate_genomic(ArrayList target) {
     def psam = paths[sample.indexOf(true)]
 
     def n = -1 // skip header
-    psam.eachLine { n++ }
+    psam.eachLine { n += 1 }
     meta.n_samples = n
 
     return [meta, paths]
@@ -223,7 +223,7 @@ def count_scores(p) {
     // withCloseable automatically closes streams
     def is_gzipped = p.toString().endsWith('.gz')
     def stream = is_gzipped ? new java.util.zip.GZIPInputStream(p.newInputStream()) : p.newInputStream()
-    return new BufferedReader(new InputStreamReader(stream)).withCloseable { buffered ->
+    return new java.io.BufferedReader(new java.io.InputStreamReader(stream)).withCloseable { buffered ->
         def n_extra_cols = 2 // ID, effect_allele
         def n_scores = buffered.readLine().split("\t").length - n_extra_cols
         assert n_scores > 0 : "Counting scores failed, please check scoring file"
