@@ -222,10 +222,10 @@ def annotate_genomic(ArrayList target) {
 
 def count_scores(def p) {
     // count number of calculated scores in a plink .scorefile
-    // try-with-resources block automatically closes streams
+    // withCloseable automatically closes streams
     def is_gzipped = p.toString().endsWith('.gz')
     def stream = is_gzipped ? new GZIPInputStream(p.newInputStream()) : p.newInputStream()
-    try (buffered = new BufferedReader(new InputStreamReader(stream))) {
+    return new BufferedReader(new InputStreamReader(stream)).withCloseable { buffered ->
         def n_extra_cols = 2 // ID, effect_allele
         def n_scores = buffered.readLine().split("\t").length - n_extra_cols
         assert n_scores > 0 : "Counting scores failed, please check scoring file"

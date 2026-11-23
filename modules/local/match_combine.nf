@@ -35,7 +35,6 @@ process MATCH_COMBINE {
     scoremeta = [:]
     scoremeta.id = "$meta.id"
 
-    script:
     if (shared.name == "NO_FILE")
         """
         set -euxo pipefail
