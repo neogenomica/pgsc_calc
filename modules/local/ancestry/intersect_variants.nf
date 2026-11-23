@@ -26,8 +26,6 @@ process INTERSECT_VARIANTS {
     path "versions.yml", emit: versions
 
     script:
-    def mem_mb = task.memory.toMega() // plink is greedy
-    def file_format = meta.is_pfile ? 'pvar' : 'bim'
     id = meta.subMap('id', 'build', 'n_chrom', 'chrom')
     output = "${meta.id}_${meta.chrom}_matched"
     """

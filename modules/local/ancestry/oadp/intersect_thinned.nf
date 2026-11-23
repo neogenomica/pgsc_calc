@@ -32,7 +32,6 @@ process INTERSECT_THINNED {
     path "versions.yml"           , emit: versions
 
     script:
-    def args = task.ext.args ?: ''
     def mem_mb = task.memory.toMega() // plink is greedy
 
     // input options

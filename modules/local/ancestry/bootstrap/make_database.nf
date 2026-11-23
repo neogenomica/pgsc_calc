@@ -3,7 +3,7 @@ process MAKE_DATABASE {
     label 'process_low'
     label 'zstd' // controls conda, docker, + singularity options
 
-    storeDir workDir / "reference"
+    storeDir "${params.outdir}/reference"
 
     conda "${task.ext.conda}"
 

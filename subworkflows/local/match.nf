@@ -3,8 +3,8 @@ include { MATCH_COMBINE  } from '../../modules/local/match_combine'
 
 workflow MATCH {
     take:
-    geno
-    pheno
+    _geno
+    _pheno
     variants
     scorefile
     ch_intersection

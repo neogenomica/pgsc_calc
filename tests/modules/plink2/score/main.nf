@@ -109,7 +109,6 @@ workflow testmultiscorefail {
     bed = file("assets/examples/target_genomes/cineca_synthetic_subset.bed", checkIfExists: true)
     fam = file("assets/examples/target_genomes/cineca_synthetic_subset.fam", checkIfExists: true)
     scorefile = file("assets/examples/scorefiles/test.scorefile", checkIfExists: true)
-    optional_allelic_freq = file('NO_FILE')
 
     def meta = [id: 'test', is_bfile: true, n_samples: 100]
     def scoremeta = [n_scores: 2]

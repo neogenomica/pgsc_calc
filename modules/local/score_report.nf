@@ -31,7 +31,6 @@ process SCORE_REPORT {
     path "versions.yml", emit: versions
 
     script:
-    def args = task.ext.args ?: ''
     run_ancestry = params.run_ancestry ? true : false
     """
     export TMPDIR=\$PWD # tmpdir must always be writable for quarto

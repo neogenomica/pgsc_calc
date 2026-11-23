@@ -1,13 +1,11 @@
 //
 // Apply a validated scoring file to the QC'd target genomic data
 //
-import java.util.zip.GZIPInputStream
 
 include { RELABEL_SCOREFILES } from '../../modules/local/ancestry/relabel_scorefiles'
 include { RELABEL_AFREQ } from '../../modules/local/ancestry/relabel_afreq'
 include { PLINK2_SCORE }    from '../../modules/local/plink2_score'
 include { SCORE_AGGREGATE } from '../../modules/local/score_aggregate'
-include { SCORE_REPORT    } from '../../modules/local/score_report'
 
 workflow APPLY_SCORE {
     take:
@@ -185,13 +183,14 @@ def annotate_scorefiles(ArrayList scorefiles) {
 
             // file name structure: {dataset}_{chr}_{effect}_{split}.scorefile -
             // {dataset} is only used to disambiguate files, not for scoremeta
-            scoremeta.chrom = it.last().getName().tokenize('_')[1].toString()
+            def tokens = it.last().getName().tokenize('_')
+            scoremeta.chrom = tokens[-3].toString()
 
             // get effect type from file name of scorefile ---------------------
-            scoremeta.effect_type = it.last().getName().tokenize('_')[2]
+            scoremeta.effect_type = tokens[-2]
 
             // get score number from file name of scorefile ---------------------
-            scoremeta.n = it.last().getName().tokenize('_')[3].tokenize('.')[0]
+            scoremeta.n = tokens[-1].tokenize('.')[0]
 
             return [scoremeta, it.last()]
     }
@@ -209,22 +208,22 @@ def annotate_genomic(ArrayList target) {
     meta.chrom = meta.chrom.toString()
 
     def paths = target.last()
-    def sample = paths.collect { it ==~ /.*fam$|.*psam$/ }
+    def sample = paths.collect { it.toString() ==~ '.*fam$|.*psam$' }
     def psam = paths[sample.indexOf(true)]
 
     def n = -1 // skip header
-    psam.eachLine { n++ }
+    psam.eachLine { n += 1 }
     meta.n_samples = n
 
     return [meta, paths]
 }
 
-def count_scores(def p) {
+def count_scores(p) {
     // count number of calculated scores in a plink .scorefile
-    // try-with-resources block automatically closes streams
+    // withCloseable automatically closes streams
     def is_gzipped = p.toString().endsWith('.gz')
-    def stream = is_gzipped ? new GZIPInputStream(p.newInputStream()) : p.newInputStream()
-    try (buffered = new BufferedReader(new InputStreamReader(stream))) {
+    def stream = is_gzipped ? new java.util.zip.GZIPInputStream(p.newInputStream()) : p.newInputStream()
+    return new java.io.BufferedReader(new java.io.InputStreamReader(stream)).withCloseable { buffered ->
         def n_extra_cols = 2 // ID, effect_allele
         def n_scores = buffered.readLine().split("\t").length - n_extra_cols
         assert n_scores > 0 : "Counting scores failed, please check scoring file"
@@ -235,6 +234,7 @@ def count_scores(def p) {
 def annotate_chrom(ArrayList it) {
     // extract chrom from filename prefix and add to hashmap
     def meta = [:].plus(it.first())
-    meta.chrom = it.last().getBaseName().tokenize('_')[1]
+    def tokens = it.last().getBaseName().tokenize('_')
+    meta.chrom = tokens[-3]
     return [meta, it.last()]
 }
