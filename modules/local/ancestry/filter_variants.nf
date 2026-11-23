@@ -26,8 +26,6 @@ process FILTER_VARIANTS {
 
     script:
     def mem_mb = task.memory.toMega() // plink is greedy
-    // dynamic input option
-    def input = (meta.is_pfile) ? '--pfile vzs' : '--bfile vzs'
     build = ['build': params.target_build]
     """
     # 1. Get QC'd variant set & unrelated samples from REFERENCE data for PCA --

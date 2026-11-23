@@ -1,13 +1,11 @@
 //
 // Apply a validated scoring file to the QC'd target genomic data
 //
-import java.util.zip.GZIPInputStream
 
 include { RELABEL_SCOREFILES } from '../../modules/local/ancestry/relabel_scorefiles'
 include { RELABEL_AFREQ } from '../../modules/local/ancestry/relabel_afreq'
 include { PLINK2_SCORE }    from '../../modules/local/plink2_score'
 include { SCORE_AGGREGATE } from '../../modules/local/score_aggregate'
-include { SCORE_REPORT    } from '../../modules/local/score_report'
 
 workflow APPLY_SCORE {
     take:
@@ -210,7 +208,7 @@ def annotate_genomic(ArrayList target) {
     meta.chrom = meta.chrom.toString()
 
     def paths = target.last()
-    def sample = paths.collect { it ==~ /.*fam$|.*psam$/ }
+    def sample = paths.collect { it.toString() ==~ '.*fam$|.*psam$' }
     def psam = paths[sample.indexOf(true)]
 
     def n = -1 // skip header
@@ -220,11 +218,11 @@ def annotate_genomic(ArrayList target) {
     return [meta, paths]
 }
 
-def count_scores(def p) {
+def count_scores(p) {
     // count number of calculated scores in a plink .scorefile
     // withCloseable automatically closes streams
     def is_gzipped = p.toString().endsWith('.gz')
-    def stream = is_gzipped ? new GZIPInputStream(p.newInputStream()) : p.newInputStream()
+    def stream = is_gzipped ? new java.util.zip.GZIPInputStream(p.newInputStream()) : p.newInputStream()
     return new BufferedReader(new InputStreamReader(stream)).withCloseable { buffered ->
         def n_extra_cols = 2 // ID, effect_allele
         def n_scores = buffered.readLine().split("\t").length - n_extra_cols

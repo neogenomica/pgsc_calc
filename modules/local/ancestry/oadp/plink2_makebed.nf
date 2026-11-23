@@ -27,7 +27,6 @@ process PLINK2_MAKEBED {
     path "versions.yml"           , emit: versions
 
     script:
-    def args = task.ext.args ?: ''
     def mem_mb = task.memory.toMega() // plink is greedy
 
     // output options

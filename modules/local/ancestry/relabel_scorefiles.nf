@@ -24,7 +24,6 @@ process RELABEL_SCOREFILES {
     relabel_meta = meta.plus(['target_format': target_format]) // .plus() returns a new map
     col_from = "ID_TARGET"
     col_to = "ID_REF"
-    output = "${meta.id}.${target_format}*"
     """
     pgscatalog-relabel --maps $matched \
         --col_from $col_from \

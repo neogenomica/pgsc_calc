@@ -8,6 +8,7 @@ include { MATCH_VARIANTS } from '../../../modules/local/match_variants'
 include { MATCH_COMBINE }  from '../../../modules/local/match_combine'
 
 workflow testmatch {
+    main:
     // test a single score (one effect weight)
     bim = file("assets/examples/target_genomes/cineca_synthetic_subset.bim", checkIfExists: true)
     bed = file("assets/examples/target_genomes/cineca_synthetic_subset.bed", checkIfExists: true)
@@ -21,7 +22,6 @@ workflow testmatch {
     ch_scorefiles = FORMAT_SCOREFILES.out.scorefiles.collect { [it] }
 
     def meta = [id: 'test', is_bfile: true, n_samples: 100, n_chrom: 1, chrom: 'ALL']
-    def scoremeta = [n_scores: 1]
 
     PLINK2_RELABELBIM( Channel.of([meta, bed, bim, fam]) )
 
